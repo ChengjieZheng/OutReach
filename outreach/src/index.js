@@ -8,8 +8,8 @@ import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
 import Auth from './Auth';
 import Dashboard from './Dashboard'; 
 import reducers from './reducer';
-
-// const store = createStore(counter, applyMiddleware(thunk))
+import './config';
+//store中存储所有人的状态，在里面都有所有人的记录（state），当需要改变的时候，需要告诉专员（dispatch）需要什么action
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
   window.devToolsExtension?window.devToolsExtension():f=>f

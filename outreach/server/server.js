@@ -13,28 +13,27 @@ const User = mongoose.model('user', new mongoose.Schema({
   age:{type:Number,require:true}
 }))
 
-// // User.create({
-// //   user:'Frank',
-// //   age:'65'
-// // }, function(err, data) {
-// //   if(!err) {
-// //     console.log(data);
-// //   } else {
-// //     console.log(err);
-// //   }
-// // })
+User.create({
+  user:'Frank',
+  age:'65'
+}, function(err, data) {
+  if(!err) {
+    console.log(data);
+  } else {
+    console.log(err);
+  }
+})
 
 app.get('/', function(req, res) {
   res.send("<h1>Hello World!</h1>")
 })
 
-// app.get('/data', function(req, res){
-//     User.findOne({user:'Frank'}, function(err,data){
-//       res.json(data);
-//     })
-//   res.json({name:"David", age:"32"});
-// })
+app.get('/data', function(req, res){
+    User.findOne({user:'Frank'}, function(err,data){
+      res.json(data);
+    })
+})
 
-app.listen(8088, function(){
-  console.log("Server is working on 8088")
+app.listen(9093, function(){
+  console.log("Server is working on 9093")
 })
