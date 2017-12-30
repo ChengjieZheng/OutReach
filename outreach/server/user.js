@@ -10,12 +10,14 @@ Router.get('/list', function(req,res){
 })
 
 Router.post('/register', function(req,res){
-  console.log(req.body)
+  console.log("user regist info: ", req.body)
   const {user, pwd, type} = req.body
+  //if user already registed, return message to client:"username is already there"
   User.findOne({user:user}, function(err,doc){
     if (doc) {
       return res.json({code:1, msg: '用户名重复'})
-    } 
+    }
+    //if username is not there, create one
     User.create({user,pwd,type}, function(err,doc){
       if(err) {
         return res.json({code:1, msg:'无法保存用户'})
