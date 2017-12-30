@@ -2,7 +2,6 @@ import axios from 'axios'
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 
-
 const initState={
   isAuth:false,
   msg: '',
