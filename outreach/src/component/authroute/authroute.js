@@ -2,7 +2,13 @@ import React from 'react'
 import axios from 'axios'
 //display this.props.history
 import {withRouter} from 'react-router-dom'
+import { loadData } from '../../redux/user.redux'
+import { connect } from 'react-redux';
 @withRouter
+@connect(
+  null,
+  { loadData }
+)
 
 class AuthRoute extends React.Component{
 
@@ -20,6 +26,7 @@ class AuthRoute extends React.Component{
         if(res.status === 200) {
           if(res.data.code === 0) {
             // this.props.history.push('/Boss')
+            this.props.loadData(res.data.data);
           } else {
             //没有登入信息就跳转
             this.props.history.push('/login')
