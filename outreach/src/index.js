@@ -9,6 +9,7 @@ import Login from './container/login/login';
 import Register from './container/register/register';
 import AuthRoute from './component/authroute/authroute';
 import BossInfo from './container/bossinfo/bossinfo';
+import GeniusInfo from './container/geniusinfo/geniusinfo';
 import './config';
 //store中存储所有人的状态，在里面都有所有人的记录（state），当需要改变的时候，需要告诉专员（dispatch）需要什么action
 const store = createStore(reducers, compose(
@@ -30,6 +31,7 @@ ReactDom.render(
         <AuthRoute></AuthRoute>
 
         <Route path='/bossinfo' component={BossInfo}></Route>
+        <Route path='/geniusinfo' component={GeniusInfo}></Route>
         <Route path='/login' component={Login}></Route>
         <Route path='/register' component={Register}></Route>
       </div>

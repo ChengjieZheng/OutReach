@@ -9,13 +9,11 @@ import { Redirect } from 'react-router-dom'
   state => state.user,
   {update}
 )
-class BossInfo extends React.Component{
+class GeniusInfo extends React.Component{
   constructor(props){
     super(props);
     this.state={
       title: "",
-      companyName: "",
-      salay: "",
       discription: "",
     }
   }
@@ -30,7 +28,7 @@ class BossInfo extends React.Component{
       <div>
         {/* 防治重复定向的报错信息 */}
         {redirect && redirect !== path ? <Redirect to={this.props.redirectTo}></Redirect> : null}
-        <NavBar mode="dark">BOSS Information</NavBar>
+        <NavBar mode="dark">Genius Information</NavBar>
         <AvatarSelector
         //when user select avatar, add avatar name to state
           selectAvatar={(imgname)=>{
@@ -45,19 +43,11 @@ class BossInfo extends React.Component{
               Position:
             </InputItem>
             <WhiteSpace />
-            <InputItem onChange={(value) => this.onChange('companyName', value)}>
-              CName:
-            </InputItem>
-            <WhiteSpace />
-            <InputItem onChange={(value) => this.onChange('salay', value)}>
-              Salary:
-            </InputItem>
-            <WhiteSpace />
             <TextareaItem 
               onChange={(value) => this.onChange('discription', value)}
               rows={3}
               autoHeight
-              title='Discription:'
+              title='Summary:'
             >
             </TextareaItem>
           </List>
@@ -71,4 +61,4 @@ class BossInfo extends React.Component{
   }
 }
 
-export default BossInfo
+export default GeniusInfo
