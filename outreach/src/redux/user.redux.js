@@ -40,7 +40,11 @@ export function user(state=initState, action) {
 //   return {type: REGISTER_SUCCESS, payload: data}
 // }
 
-function authSuccess(data) {
+function authSuccess(obj) {
+  // let filterData = {...data};
+  // delete filterData.pwd;
+  // delete password from obj
+  const {pwd, ...data} = obj;
   return {type: AUTH_SUCCESS, payload: data}
 }
 
