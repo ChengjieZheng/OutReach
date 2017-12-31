@@ -49,6 +49,7 @@ class Login extends React.Component{
             <WhiteSpace />
             <InputItem
               onChange={(v)=>this.handleChange('pwd',v)}
+              type='password'
             >password</InputItem>
             <WhiteSpace />
             {this.props.msg? <p className="error-msg">{this.props.msg}</p>:null}
