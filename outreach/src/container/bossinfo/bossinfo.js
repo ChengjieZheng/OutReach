@@ -21,6 +21,7 @@ class BossInfo extends React.Component{
       <div>
       <NavBar mode="dark">BOSS Information</NavBar>
       <AvatarSelector
+       //when user select avatar, add avatar name to state
         selectAvatar={(imgname)=>{
           this.setState({
             avatar: imgname

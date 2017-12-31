@@ -4,9 +4,7 @@ import {Grid, List} from 'antd-mobile'
 class AvataSelector extends React.Component{
   constructor(props){
     super(props)
-    this.state={
-
-    }
+    this.state={}
   }
   render(){
     const avatarList = '1,2,3,4,5,6,7,8'
@@ -15,6 +13,7 @@ class AvataSelector extends React.Component{
                           icon:require(`../img/${value}.jpg`),
                           text:value
                         }))
+    //get current selected avatar
     const gridHeader = this.state.text
                        ?
                        (
@@ -33,6 +32,7 @@ class AvataSelector extends React.Component{
           columnNum={4}
           onClick={elm => {
             this.setState(elm)
+            //when user select avatar, add avatar name to state
             this.props.selectAvatar(elm.text)}}
           /> 
         </List>
