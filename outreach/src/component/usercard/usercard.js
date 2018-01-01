@@ -14,7 +14,8 @@ class UserCard extends React.Component{
         {userList.map(v=>(
           v.avatar 
           ?
-          <div key={v._id}>
+          <WingBlank key={v._id}>
+          <WhiteSpace/>
             <Card>
               <Card.Header
                 title={v.user}
@@ -29,8 +30,7 @@ class UserCard extends React.Component{
                 {v.type === 'boss' ? <div>Salary: {v.money}</div> : null }
               </Card.Body>
             </Card>
-            <WhiteSpace/>
-          </div>
+          </WingBlank>
           :
           null
         ))}

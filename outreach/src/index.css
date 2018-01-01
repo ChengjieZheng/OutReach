@@ -3,11 +3,12 @@
     bottom: 0;
     width: 100%;
 }
-
-.am-navbar{
-    position:fixed;
+/* .am-navbar */
+.fixed-header {
+    position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
 }
 
 .page-content{
