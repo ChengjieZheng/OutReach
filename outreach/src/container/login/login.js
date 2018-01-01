@@ -4,6 +4,7 @@ import {List, InputItem, WingBlank, WhiteSpace, Button} from 'antd-mobile';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {login} from '../../redux/user.redux';
+import outreachForm from '../../component/outreach-form/outreach-form'
 // 属性代理
 // function newHello(Comp) {
 //   class WrapComp extends React.Component{
@@ -26,9 +27,21 @@ import {login} from '../../redux/user.redux';
 //     )
 //   }
 // }
+//叫反向继承，作用：代码复用，逻辑抽象
+// function newHello(Comp){
+//   class WrapComp extends Comp{
+//     componentDidMount() {
+//       console.log("new life cicle")
+//     }
+//     render() {
+//       return (
+//         <Comp {...this.props} />
+//       )
+//     }
+//   }
+// }
 
-
-
+@outreachForm
 @connect(
   state => state.user,
   {login}
@@ -37,25 +50,17 @@ import {login} from '../../redux/user.redux';
 class Login extends React.Component{
   constructor(props){
     super(props);
-    this.state={
-      user: '',
-      pwd: '',
-    }
     this.register = this.register.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  register(e){
+  register(){
     console.log(this.props);
     this.props.history.push('/register');
   }
 
   handleLogin(){
-    this.props.login(this.state);
-  }
-
-  handleChange(key, value) {
-    this.setState({[key]: value});
+    this.props.login(this.props.state);
   }
 
   render(){
@@ -68,11 +73,11 @@ class Login extends React.Component{
           <List>
             <WhiteSpace />
             <InputItem 
-              onChange={(v)=>this.handleChange('user',v)}
+              onChange={(v)=>this.props.handleChange('user',v)}
             >username</InputItem>
             <WhiteSpace />
             <InputItem
-              onChange={(v)=>this.handleChange('pwd',v)}
+              onChange={(v)=>this.props.handleChange('pwd',v)}
               type='password'
             >password</InputItem>
             <WhiteSpace />
