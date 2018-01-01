@@ -26,6 +26,7 @@ class AuthRoute extends React.Component{
         if(res.status === 200) {
           if(res.data.code === 0) {
             // this.props.history.push('/Boss')
+            //if user logged in
             this.props.loadData(res.data.data);
           } else {
             //没有登入信息就跳转
