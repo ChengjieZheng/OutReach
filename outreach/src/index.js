@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import {createStore, applyMiddleware, compose} from 'redux'//处理中间件
 import thunk from 'redux-thunk' //引入thunk中间件
 import { Provider } from 'react-redux';
-import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import reducers from './reducer';
 import Login from './container/login/login';
 import Register from './container/register/register';
