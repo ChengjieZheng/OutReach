@@ -4,6 +4,30 @@ import {List, InputItem, WingBlank, WhiteSpace, Button} from 'antd-mobile';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {login} from '../../redux/user.redux';
+// 属性代理
+// function newHello(Comp) {
+//   class WrapComp extends React.Component{
+//     render(){
+//       return (
+//         <div>
+//           <Comp />
+//           <h2>hahdkfjkfjdfj</h2>
+//         </div>
+//       )
+//     }
+//   }
+//   return WrapComp
+// }
+// @newHello === Hello = newHello(Hello)
+// class Hello extends React.Component{
+//   render(){
+//     return (
+//       <h5>Hello, I am the origianal component</h5>
+//     )
+//   }
+// }
+
+
 
 @connect(
   state => state.user,
@@ -37,7 +61,7 @@ class Login extends React.Component{
   render(){
     return (
       <div>
-      {this.props.redirectTo? <Redirect to={this.props.redirectTo} /> : null}
+      {this.props.redirectTo && this.props.redirectTo !== '/login' ? <Redirect to={this.props.redirectTo} /> : null}
         <Logo/>
         <WingBlank>
           {/* use List to display all the input */}
