@@ -14,7 +14,7 @@ class GeniusInfo extends React.Component{
     super(props);
     this.state={
       title: "",
-      discription: "",
+      desc: "",
     }
   }
   onChange(key, value) {
@@ -44,7 +44,7 @@ class GeniusInfo extends React.Component{
             </InputItem>
             <WhiteSpace />
             <TextareaItem 
-              onChange={(value) => this.onChange('discription', value)}
+              onChange={(value) => this.onChange('desc', value)}
               rows={3}
               autoHeight
               title='Summary:'

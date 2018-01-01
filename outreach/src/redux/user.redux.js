@@ -7,7 +7,6 @@ import {getRedirectPath} from '../util';
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 const LOAD_DATA = 'LOAD_DATA'
-const UPDATE_DATA = 'UPDATE_DATA'
 
 const initState={
   redirectTo:'',

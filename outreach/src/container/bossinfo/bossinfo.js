@@ -14,9 +14,9 @@ class BossInfo extends React.Component{
     super(props);
     this.state={
       title: "",
-      companyName: "",
-      salay: "",
-      discription: "",
+      company: "",
+      money: "",
+      desc: "",
     }
   }
   onChange(key, value) {
@@ -45,16 +45,16 @@ class BossInfo extends React.Component{
               Position:
             </InputItem>
             <WhiteSpace />
-            <InputItem onChange={(value) => this.onChange('companyName', value)}>
+            <InputItem onChange={(value) => this.onChange('company', value)}>
               CName:
             </InputItem>
             <WhiteSpace />
-            <InputItem onChange={(value) => this.onChange('salay', value)}>
+            <InputItem onChange={(value) => this.onChange('money', value)}>
               Salary:
             </InputItem>
             <WhiteSpace />
             <TextareaItem 
-              onChange={(value) => this.onChange('discription', value)}
+              onChange={(value) => this.onChange('desc', value)}
               rows={3}
               autoHeight
               title='Discription:'
