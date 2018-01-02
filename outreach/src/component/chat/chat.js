@@ -2,11 +2,11 @@ import React from 'react'
 import io from 'socket.io-client'
 import {List, InputItem, NavBar} from 'antd-mobile'
 import { connect } from 'react-redux'
-import {  sendMsg } from '../../redux/chart.redux'
+import {  sendMsg,getMegList,recvMsg } from '../../redux/chart.redux'
 const socket = io('ws://localhost:9093')
 @connect(
   state=>state,
-  {sendMsg}
+  {sendMsg,getMegList,recvMsg}
 )
 
 
@@ -19,14 +19,11 @@ class Chat extends React.Component{
       msg:[],
     }
   }
-  componentDidMount() {
-    // socket.on('recvmsg', (data) => {
-    //   console.log(data);
-    //   this.setState({
-    //     msg:[...this.state.msg, data.text]
-    //   })
-    // })
-
+  componentDidMount(){
+    if(!this.props.chat.chatmsg.length) {
+      this.props.getMegList();
+      this.props.recvMsg();
+    }
   }
 
   handleSubmit(){
@@ -40,16 +37,17 @@ class Chat extends React.Component{
   }
 
   render(){
-    const user = this.props.match.params.user
+    const userid = this.props.match.params.user
     const Item = List.Item
-    console.log(this.props)
     return (
       <div id="chat-page">
         <NavBar mode='dark'>
           {this.props.user.user}
         </NavBar>
       {this.props.chat.chatmsg.map(v=>{
-        return v.from === user ? (
+        console.log(v.from === userid)
+        console.log(v.from, userid)
+        return v.from === userid ? (
           <List key={v._id}>
             <Item>
               {v.content}

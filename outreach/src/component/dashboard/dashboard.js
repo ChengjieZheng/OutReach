@@ -18,10 +18,10 @@ function Msg() {
 )
 
 class Dashboard extends React.Component{
-  componentDidMount(){
-    this.props.getMegList();
-    this.props.recvMsg();
-  }
+  // componentDidMount(){
+  //   this.props.getMegList();
+  //   this.props.recvMsg();
+  // }
   render(){
     const {pathname} = this.props.location
     const user = this.props.user
