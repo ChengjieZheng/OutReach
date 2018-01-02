@@ -11,6 +11,7 @@ import AuthRoute from './component/authroute/authroute';
 import BossInfo from './container/bossinfo/bossinfo';
 import GeniusInfo from './container/geniusinfo/geniusinfo';
 import Dashboard from './component/dashboard/dashboard';
+import Chat from './component/chat/chat'
 import './config';
 import './index.css';
 //store中存储所有人的状态，在里面都有所有人的记录（state），当需要改变的时候，需要告诉专员（dispatch）需要什么action
@@ -44,6 +45,7 @@ ReactDom.render(
           <Route path='/geniusinfo' component={GeniusInfo}></Route>
           <Route path='/login' component={Login}></Route>
           <Route path='/register' component={Register}></Route>
+          <Route path='/chat/:user' component={Chat}></Route>
           {/* 登入成功后，所有页面归Dashboard管理 */}
           <Route component={Dashboard}></Route>
         </Switch>

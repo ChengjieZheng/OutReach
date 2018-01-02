@@ -3,13 +3,26 @@ const utils = require('utility')
 const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
+const Chat = model.getModel('chat')
 const _filter = {'pwd':0, '__v': 0}
+
+// Chat.remove({}, function(err, doc){})
 
 Router.get('/list', function(req,res){
   // User.remove({},function(err,doc){})
   const {type} = req.query;
   User.find({type}, function(err, doc){
     return res.json({code:0, data:doc})
+  })
+})
+
+Router.get('/getmsglist', function(req,res){
+  const user = req.cookies.user;
+  // 如果想要同时查询多个字段，可以使用：{'$or':[{from:user,to:user}]}
+  Chat.find({}, function(err, doc) {
+    if(!err) {
+      return res.json({code:0, msgs: doc})
+    }
   })
 })
 
@@ -42,11 +55,7 @@ Router.post('/login', function(req, res){
 })
 
 Router.post('/register', function(req,res){
-  console.log("user regist info from client: ", req.body)
   const {user, pwd, type} = req.body
-  console.log("user: ", user)
-  console.log("pwd: ", pwd)
-  console.log("type: ", type)
   //if user already registed, return message to client:"username is already there"
   User.findOne({user:user}, function(err,doc){
     if (doc) {

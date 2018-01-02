@@ -6,17 +6,22 @@ import {Switch,Route} from 'react-router-dom'
 import Boss from '../boss/boss'
 import Genius from '../genius/genius'
 import User from '../user/user'
+import { getMegList, recvMsg} from '../../redux/chart.redux'
 
 function Msg() {
   return <h2>消息列表</h2>
 }
 
 @connect(
-  state=>state
+  state=>state,
+  {getMegList, recvMsg}
 )
 
 class Dashboard extends React.Component{
-  
+  componentDidMount(){
+    this.props.getMegList();
+    this.props.recvMsg();
+  }
   render(){
     const {pathname} = this.props.location
     const user = this.props.user
