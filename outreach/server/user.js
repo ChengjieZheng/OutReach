@@ -26,7 +26,9 @@ Router.get('/getmsglist', function(req,res){
     })
     Chat.find({'$or':[{from:user},{to:user}]}, function(err, doc) {
       if(!err) {
-        return res.json({code:0, msgs: doc, users:users})
+        let data = {code:0, msgs: doc, users:users};
+        console.log("data ready to send to client: ", doc);
+        return res.json(data)
       }
     })
   })
