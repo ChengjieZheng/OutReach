@@ -58,6 +58,7 @@ export function sendMsg({from, to, msg}){
 }
 
 export function getMegList(){
+  console.log("getMegList")
   return (dispatch, getState)=>{
     axios.get('/user/getmsglist')
     .then(res => {

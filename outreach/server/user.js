@@ -78,6 +78,9 @@ Router.post('/register', function(req,res){
       }
       const {user, type, _id} = doc;
       res.cookie('userid', _id)
+      console.log("user: ", user)
+      console.log("type: ", type)
+      console.log("_id: ", _id)
       return res.json({code:0, data:{user, type, _id}})
     })
     //if username is not there, create one

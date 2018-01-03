@@ -27,7 +27,8 @@ class Chat extends React.Component{
       this.props.getMegList();
       this.props.recvMsg();
     }
-    this.fixCarousel()
+    // this.fixCarousel()
+    
   }
 
   fixCarousel(){
@@ -40,7 +41,9 @@ class Chat extends React.Component{
   handleSubmit(){
     // socket.emit('sendmsg',{text: this.state.text})
     // this.setState({text: ''})
+    console.log("this.props: ", this.props)
     const from = this.props.user._id
+    console.log("from: ", from)
     const to = this.props.match.params.user
     const msg = this.state.text
     this.props.sendMsg({from,to,msg})
@@ -56,7 +59,6 @@ class Chat extends React.Component{
                   .split(' ')
                   .filter(v=>v)
                   .map(v=>({text: v}))
-    console.log(emoji)
 
 
     const userid = this.props.match.params.user
