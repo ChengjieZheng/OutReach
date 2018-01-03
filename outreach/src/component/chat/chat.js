@@ -25,7 +25,7 @@ class Chat extends React.Component{
   componentDidMount(){
     if(!this.props.chat.chatmsg.length) {
       this.props.getMegList();
-      this.props.recvMsg();
+      // this.props.recvMsg();
     }
   }
 
