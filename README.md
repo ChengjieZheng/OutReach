@@ -32,3 +32,4 @@ npm install
 * start your MongoDB server
 * `nodemon server/server.js`
 * `npm start`
+* Please type localhost/3000/login to start
