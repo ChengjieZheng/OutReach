@@ -11,12 +11,13 @@ OutReach is an app which can help recruiter or founder to communicate with job s
 ## Features
 
 * Authentication
+    * Using cookies and utility to ensure account security 
 * Boss list
 * Geniues list
 * Realtime  chat
 * Can use emoji while chating
 * Message list
-    * unread messages number displayed
+    * Unread messages number displayed
 
 ## Building
 
@@ -26,7 +27,7 @@ Install dependencies:
 npm install
 ```
 
-### npm scripts
+### Npm scripts
 
 * start your MongoDB server
 * `nodemon server/server.js`
