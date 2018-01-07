@@ -58,7 +58,7 @@ class Dashboard extends React.Component{
       },
       {
         path: '/me',
-        text: 'Me',
+        text: 'Profile',
         icon: 'user',
         title: 'Profile',
         component: User,
