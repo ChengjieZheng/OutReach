@@ -30,7 +30,7 @@ class AvataSelector extends React.Component{
                        :
                        'Please select an avatar'
     return (
-      <div>
+      <div id="avatar-selector-display">
         <List renderHeader={()=>gridHeader}>
           <Grid 
           data={avatarList} 

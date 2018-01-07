@@ -31,14 +31,6 @@ class Chat extends React.Component{
     
   }
 
-  // componentDidUpdate(){
-  //   const test = document.getElementById("emojiDisplay")
-  //   if(test){
-  //     console.log(document.getElementById("emojiDisplay").clientHeight)
-  //   }
-    
-  // }
-
   componentWillUnmount(){
     const to = this.props.match.params.user
     this.props.readMsg(to)
@@ -94,29 +86,31 @@ class Chat extends React.Component{
           mode='dark'>
           {users[userid].name}
         </NavBar>
-        <QueueAnim delay={100}>
-          {chatmsgs.map(v=>{
-          const avatar = require(`../img/${users[v.from].avatar}.jpg`)
-          return v.from === userid ? (
-            <List key={v._id}>
-              <Item
-                thumb = {avatar}
-              >
-                {v.content}
-              </Item>
-            </List>
-          ) : (
-            <List key={v._id}>
-              <Item 
-                extra={<img src={avatar} alt=""/>}
-                className='chat-me'>
-                {v.content}
-              </Item>
-            </List>
-          )
-          
-        })}
-      </QueueAnim> 
+        <div id="chat-page-messages">
+          <QueueAnim delay={100}>
+            {chatmsgs.map(v=>{
+            const avatar = require(`../img/${users[v.from].avatar}.jpg`)
+            return v.from === userid ? (
+              <List key={v._id}>
+                <Item
+                  thumb = {avatar}
+                >
+                  {v.content}
+                </Item>
+              </List>
+            ) : (
+              <List key={v._id}>
+                <Item 
+                  extra={<img src={avatar} alt=""/>}
+                  className='chat-me'>
+                  {v.content}
+                </Item>
+              </List>
+            )
+            
+          })}
+        </QueueAnim>
+      </div> 
       <div className="stick-footer">
         <List>
           <InputItem

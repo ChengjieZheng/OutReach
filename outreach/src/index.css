@@ -5,7 +5,7 @@
     height: 50px;
 }
 /* .am-navbar */
-.fixed-header, .am-navbar{
+.fixed-header{
     position: fixed;
     top: 0;
     width: 100%;
@@ -34,7 +34,7 @@
     margin-top: 0;
 }
 
-#chat-page {
+#chat-page-messages{
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -45,4 +45,15 @@
     bottom: 0;
     width: 100%;
     height: 50px;
+}
+
+.am-navbar.am-navbar-dark {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#avatar-selector-display{
+    margin-top: 50px;
 }
