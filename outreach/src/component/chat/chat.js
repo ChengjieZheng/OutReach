@@ -53,7 +53,9 @@ class Chat extends React.Component{
       return;
     }
     this.props.sendMsg({from,to,msg})
-    this.setState({text:''})
+    this.setState({
+      text:'',
+      showEmoji: false})
 
   }
 
