@@ -29,7 +29,7 @@ npm install
 
 ### Npm scripts
 
-* start your MongoDB server
+* start your MongoDB server `mongod --config /usr/local/etc/mongod.conf`
 * `npm run build`
 * `npm run server`
 * Please type localhost/9030 to start
