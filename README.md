@@ -30,6 +30,6 @@ npm install
 ### Npm scripts
 
 * start your MongoDB server
-* `nodemon server/server.js`
-* `npm start`
-* Please type localhost/3000/login to start
+* `npm run build`
+* `npm run server`
+* Please type localhost/9030 to start
