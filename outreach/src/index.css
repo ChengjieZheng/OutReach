@@ -1,11 +1,11 @@
-.am-tab-bar-bar{
+.am-tab-bar-bar,.stick-footer{
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: auto;
+    height: 50px;
 }
 /* .am-navbar */
-.fixed-header {
+.fixed-header, .am-navbar{
     position: fixed;
     top: 0;
     width: 100%;
@@ -32,11 +32,4 @@
 
 #chat-page .am-grid-text{
     margin-top: 0;
-}
-
-.stick-footer{
-    z-index: 10;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }

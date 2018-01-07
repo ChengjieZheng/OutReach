@@ -31,7 +31,6 @@ class User extends React.Component{
   }
 
   render(){
-    console.log(this.props)
     const props = this.props;
     const Item = List.Item;
     const Brief = Item.Brief

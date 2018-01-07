@@ -7,7 +7,6 @@ export default function outreachForm(Comp){
       this.handleChange = this.handleChange.bind(this)
     }
     handleChange(key, value) {
-      console.log(value)
       this.setState({[key]: value});
     }
     render() {

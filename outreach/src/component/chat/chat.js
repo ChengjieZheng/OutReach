@@ -31,9 +31,7 @@ class Chat extends React.Component{
   }
 
   componentWillUnmount(){
-    console.log("props: ", this.props);
     const to = this.props.match.params.user
-    console.log(to);
     this.props.readMsg(to)
   }
 
@@ -47,9 +45,7 @@ class Chat extends React.Component{
   handleSubmit(){
     // socket.emit('sendmsg',{text: this.state.text})
     // this.setState({text: ''})
-    console.log("this.props: ", this.props)
     const from = this.props.user._id
-    console.log("from: ", from)
     const to = this.props.match.params.user
     const msg = this.state.text
     this.props.sendMsg({from,to,msg})

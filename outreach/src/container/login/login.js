@@ -55,7 +55,6 @@ class Login extends React.Component{
   }
 
   register(){
-    console.log(this.props);
     this.props.history.push('/register');
   }
 
@@ -66,18 +65,18 @@ class Login extends React.Component{
   render(){
     return (
       <div>
-      {this.props.redirectTo && this.props.redirectTo !== '/login' ? <Redirect to={this.props.redirectTo} /> : null}
+      {(this.props.redirectTo && this.props.redirectTo !== '/login') ? <Redirect to={this.props.redirectTo} /> : null}
         <Logo/>
         <WingBlank>
           {/* use List to display all the input */}
           <List>
             <WhiteSpace />
             <InputItem 
-              onChange={(v)=>this.props.handleChange('user',v)}
+              onChange={v=>this.props.handleChange('user',v)}
             >username</InputItem>
             <WhiteSpace />
             <InputItem
-              onChange={(v)=>this.props.handleChange('pwd',v)}
+              onChange={v=>this.props.handleChange('pwd',v)}
               type='password'
             >password</InputItem>
             <WhiteSpace />

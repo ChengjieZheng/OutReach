@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {NavBar} from 'antd-mobile'
 import NavLinkBar from '../navlinkbar/navlinkbar'
-import {Switch,Route,Redirect} from 'react-router-dom'
+import {Route,Redirect} from 'react-router-dom'
 import Boss from '../boss/boss'
 import Genius from '../genius/genius'
 import User from '../user/user'
@@ -24,7 +24,6 @@ class Dashboard extends React.Component{
   }
 
   componentDidCatch(err, info) {
-    console.log(123, err, info)
     this.setState({
       hasError: true
     })
@@ -38,7 +37,7 @@ class Dashboard extends React.Component{
         path: '/boss',
         text: 'Genius',
         icon: 'job',
-        title: '牛人列表',
+        title: 'Genius',
         component: Boss,
         hide: user.type === 'genius'
       },
@@ -46,7 +45,7 @@ class Dashboard extends React.Component{
         path: '/genius',
         text: 'Boss',
         icon: 'boss',
-        title: 'BOSS列表',
+        title: 'BOSS',
         component: Genius,
         hide: user.type === 'boss'
       },
@@ -54,19 +53,18 @@ class Dashboard extends React.Component{
         path: '/msg',
         text: 'Message',
         icon: 'msg',
-        title: '消息列表',
+        title: 'Message List',
         component: Msg,
       },
       {
         path: '/me',
         text: 'Me',
         icon: 'user',
-        title: '个人中心',
+        title: 'Profile',
         component: User,
       }
     ]
     const page = navList.find(v=>v.path === pathname)
-    console.log(page)
     return (
       page ?
       (

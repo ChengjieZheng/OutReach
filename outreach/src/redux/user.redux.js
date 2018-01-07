@@ -11,7 +11,6 @@ const LOGOUT = 'LOGOUT_SUBMIT'
 
 const initState={
   redirectTo:'',
-  // isAuth:false,
   msg: '',
   user: '',
   type: '',
@@ -47,7 +46,6 @@ function authSuccess(obj) {
   // delete filterData.pwd;
   // delete password from obj
   const {pwd, ...data} = obj;
-  // console.log("data when user register: ", data)
   return {type: AUTH_SUCCESS, payload: data}
 }
 
@@ -89,7 +87,6 @@ export function register({user, pwd, repeatpwd, type}){
     axios.post('/user/register',{user, pwd, type})
     .then(res=>{
       if (res.status === 200 && res.data.code === 0) {
-        // console.log("res.data: ", res.data);
         dispatch(authSuccess(res.data.data))
       } else {
         dispatch(errorMsg(res.data.msg))
