@@ -28,7 +28,16 @@ class Chat extends React.Component{
       this.props.getMegList();
       this.props.recvMsg();
     }
+    
   }
+
+  // componentDidUpdate(){
+  //   const test = document.getElementById("emojiDisplay")
+  //   if(test){
+  //     console.log(document.getElementById("emojiDisplay").clientHeight)
+  //   }
+    
+  // }
 
   componentWillUnmount(){
     const to = this.props.match.params.user
@@ -135,18 +144,20 @@ class Chat extends React.Component{
             }
           ></InputItem>
         </List>
-        {this.state.showEmoji ? 
-          <Grid 
-            data = {emoji}
-            columnNum = {9}
-            carouselMaxRow = {4}
-            isCarousel = {true}
-            onClick = {(e)=>{    
-              const selectEmoji = e.text;
-              this.setState({text:this.state.text + selectEmoji});
+        {this.state.showEmoji ?
+          <div id="emojiDisplay">
+            <Grid
+              data = {emoji}
+              columnNum = {9}
+              carouselMaxRow = {4}
+              isCarousel = {true}
+              onClick = {(e)=>{    
+                const selectEmoji = e.text;
+                this.setState({text:this.state.text + selectEmoji});
+                }
               }
-            }
-          />
+            />
+          </div>
           : 
           null
           } 

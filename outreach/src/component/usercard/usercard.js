@@ -26,24 +26,27 @@ class UserCard extends React.Component{
         {userList.map(v=>(
           v.avatar 
           ?
-          (
-            <Card 
-              key={v._id}
-              onClick={()=>this.handleClick(v)}
-              >
-              <Card.Header
-                title={v.user}
-                thumb={require(`../img/${v.avatar}.jpg`)}
-                extra={<span>{v.title}</span>}
-              ></Card.Header>
-              <Card.Body>
-                {v.type === 'boss' ? <div>Company: {v.company}</div> : null}
-                {v.desc.split('\n').map(d=>(
-                  <div key={d}>{d}</div>
-                ))}
-                {v.type === 'boss' ? <div>Salary: {v.money}</div> : null }
-              </Card.Body>
-            </Card>
+          ( 
+            <div>
+              <Card 
+                key={v._id}
+                onClick={()=>this.handleClick(v)}
+                >
+                <Card.Header
+                  title={v.user}
+                  thumb={require(`../img/${v.avatar}.jpg`)}
+                  extra={<span>{v.title}</span>}
+                ></Card.Header>
+                <Card.Body>
+                  {v.type === 'boss' ? <div>Company: {v.company}</div> : null}
+                  {v.desc.split('\n').map(d=>(
+                    <div key={d}>{d}</div>
+                  ))}
+                  {v.type === 'boss' ? <div>Salary: {v.money}</div> : null }
+                </Card.Body>
+              </Card>
+              <WhiteSpace></WhiteSpace>
+            </div>
             )
           :
           null

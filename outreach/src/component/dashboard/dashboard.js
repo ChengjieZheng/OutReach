@@ -70,7 +70,7 @@ class Dashboard extends React.Component{
       (
         <div>   
           <NavBar className='fixed-header' mode='dard'>{page.title}</NavBar>
-          <div style={{marginTop: 45}}>
+          <div style={{marginTop: 45,marginBottom: 50}}>
               <QueueAnim type="scaleX" duration={800}>
                 <Route key={page.title} path={page.path} component={page.component}></Route>
               </QueueAnim> 
