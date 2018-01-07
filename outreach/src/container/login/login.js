@@ -3,7 +3,7 @@ import Logo from '../../component/logo/logo';
 import {List, InputItem, WingBlank, WhiteSpace, Button} from 'antd-mobile';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {login} from '../../redux/user.redux';
+import {login, registerPage} from '../../redux/user.redux';
 import outreachForm from '../../component/outreach-form/outreach-form'
 // 属性代理
 // function newHello(Comp) {
@@ -44,7 +44,7 @@ import outreachForm from '../../component/outreach-form/outreach-form'
 @outreachForm
 @connect(
   state => state.user,
-  {login}
+  {login, registerPage}
 )
 
 class Login extends React.Component{
@@ -55,7 +55,9 @@ class Login extends React.Component{
   }
 
   register(){
-    this.props.history.push('/register');
+    // this.props.history.push('/register');
+    this.props.registerPage()
+
   }
 
   handleLogin(){

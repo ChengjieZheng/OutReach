@@ -8,6 +8,7 @@ const AUTH_SUCCESS = 'AUTH_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 const LOAD_DATA = 'LOAD_DATA'
 const LOGOUT = 'LOGOUT_SUBMIT'
+const REGISTERPAGE = 'REGISTERPAGE'
 
 const initState={
   redirectTo:'',
@@ -31,6 +32,8 @@ export function user(state=initState, action) {
       return {...initState, redirectTo: '/login'}
     case ERROR_MSG:
       return {...state, msg:action.msg}
+    case REGISTERPAGE:
+      return {...initState, redirectTo: '/register'}
     default:
       return state
     
@@ -115,4 +118,8 @@ export function login({user, pwd}){
 
 export function logoutSubmit() {
   return { type: LOGOUT}
+}
+
+export function registerPage(){
+  return { type: REGISTERPAGE}
 }
