@@ -27,7 +27,6 @@ Router.get('/getmsglist', function(req,res){
     Chat.find({'$or':[{from:user},{to:user}]}, function(err, doc) {
       if(!err) {
         let data = {code:0, msgs: doc, users:users};
-        console.log("data ready to send to client: ", doc);
         return res.json(data)
       }
     })
@@ -35,7 +34,6 @@ Router.get('/getmsglist', function(req,res){
 })
 
 Router.post('/update', function(req,res) {
-  console.log(req.cookies);
   const {userid} = req.cookies;
   if(!userid) {
     return res.json({code:1})
@@ -59,7 +57,6 @@ Router.post('/readmsg', function(req, res){
     //修改多行
     {'multi': true},
     function(err,doc){
-    console.log(doc)
     if (!err){
       return res.json({code:0, num: doc.nModified});
     } 
@@ -69,7 +66,6 @@ Router.post('/readmsg', function(req, res){
 
 
 Router.post('/login', function(req, res){
-  console.log("user login info from client: ", req.body);
   const {user,pwd} = req.body;
   User.findOne({user,pwd:md5Pwd(pwd)},_filter,function(err, doc){//not return pwd
     if (!doc) {
@@ -89,16 +85,12 @@ Router.post('/register', function(req,res){
     }
     //create方法不能发挥生成后的ID，所有我们改用Save方法
     const userModel = new User({user, type, pwd:md5Pwd(pwd)})
-    console.log("new userModel: ", userModel)
     userModel.save(function(err, doc) {
       if(err) {
         return res.json({code:1, msg: 'back-end error'})
       }
       const {user, type, _id} = doc;
       res.cookie('userid', _id)
-      console.log("user: ", user)
-      console.log("type: ", type)
-      console.log("_id: ", _id)
       return res.json({code:0, data:{user, type, _id}})
     })
     //if username is not there, create one
@@ -113,7 +105,6 @@ Router.post('/register', function(req,res){
 
 Router.get('/info', function(req,res) {
   const {userid} = req.cookies;
-  console.log("userid from client: ", userid);
   if(!userid) {
     return res.json({code:1});
   }

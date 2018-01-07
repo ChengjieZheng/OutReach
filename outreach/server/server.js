@@ -12,7 +12,6 @@ const path = require('path')
 
 //import javascript and css file
 import staticPath from '../build/asset-manifest.json'
-// console.log(staticPath)
 
 // work with express socket 和 http 关联
 const server = require('http').Server(app)
@@ -48,7 +47,6 @@ io.on('connection', function(socket){
     const {from, to, msg} = data;
     const chatid = [from,to].sort().join('_')
     Chat.create({chatid, from, to, content:msg}, function(err, doc) {
-      console.log("doc: ", doc)
       io.emit('recvmsg', Object.assign({}, doc._doc))
     })
   })
@@ -176,7 +174,6 @@ app.use(function(req, res, next) {
 
 
   // res.send(pageHtml)
-  // console.log("path resolve", path.resolve('build/index.html'))
   // return res.sendFile(path.resolve('build/index.html'))
 })
 
