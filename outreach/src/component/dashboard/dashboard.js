@@ -2,12 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {NavBar} from 'antd-mobile'
 import NavLinkBar from '../navlinkbar/navlinkbar'
-import {Switch,Route} from 'react-router-dom'
+import {Switch,Route,Redirect} from 'react-router-dom'
 import Boss from '../boss/boss'
 import Genius from '../genius/genius'
 import User from '../user/user'
 import Msg from '../msg/msg'
 import { getMegList, recvMsg} from '../../redux/chart.redux'
+import QueueAnim from 'rc-queue-anim'
 
 @connect(
   state=>state,
@@ -21,6 +22,14 @@ class Dashboard extends React.Component{
       this.props.recvMsg();
     }
   }
+
+  componentDidCatch(err, info) {
+    console.log(123, err, info)
+    this.setState({
+      hasError: true
+    })
+  }
+
   render(){
     const {pathname} = this.props.location
     const user = this.props.user
@@ -56,20 +65,23 @@ class Dashboard extends React.Component{
         component: User,
       }
     ]
-
+    const page = navList.find(v=>v.path === pathname)
+    console.log(page)
     return (
-      <div>   
-        <NavBar className='fixed-header' mode='dard'>{navList.find(v=>v.path===pathname).title}</NavBar>
-        <div style={{marginTop: 45}}>
-          <Switch>
-            {navList.map(v=>(
-              <Route key={v.title} path={v.path} component={v.component}></Route>
-            ))}
-          </Switch>
+      page ?
+      (
+        <div>   
+          <NavBar className='fixed-header' mode='dard'>{page.title}</NavBar>
+          <div style={{marginTop: 45}}>
+              <QueueAnim type="scaleX" duration={800}>
+                <Route key={page.title} path={page.path} component={page.component}></Route>
+              </QueueAnim> 
+          </div>
+          <NavLinkBar data={navList}></NavLinkBar>
         </div>
-        <NavLinkBar data={navList}></NavLinkBar>
-      </div>
-
+      )
+      :
+      <Redirect to='/msg'></Redirect>
     )
   }
 }

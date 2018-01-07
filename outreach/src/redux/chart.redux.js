@@ -24,7 +24,7 @@ export function chat(state=initState, action) {
       return {...state,chatmsg: action.payload.msgs, users: action.payload.users, unread:action.payload.msgs.filter(v=>!v.read && v.to === action.payload.userid).length}
     case MSG_RECV:
     //需要通过对比userid来检验unread是否+1
-      const n = action.payload.to == action.userid ? 1 : 0
+      const n = action.payload.to === action.userid ? 1 : 0
       return {...state, chatmsg:[...state.chatmsg, action.payload],unread: state.unread + n}
     case MSG_READ:
     //chatmsg:state.chatmsg.map(v=>({...v,read:from==v.from?true:v.read}))
@@ -81,17 +81,26 @@ export function sendMsg({from, to, msg}){
   
 }
 
+
+
 export function getMegList(){
   console.log("getMegList")
-  return (dispatch, getState)=>{
-    axios.get('/user/getmsglist')
-    .then(res => {
-      // console.log('getMessageList from server: ', res.data)
+  // return (dispatch, getState)=>{
+  //   axios.get('/user/getmsglist')
+  //   .then(res => {
+  //     if (res.status === 200 && res.data.code === 0) {
+  //       const userid = getState().user._id;
+  //       dispatch(msgList(res.data.msgs, res.data.users, userid));
+  //     }
+  //   })
+  // }
+  //excample for async + await, await must write inside async
+  return async (dispatch, getState)=>{
+    const res = await axios.get('/user/getmsglist')
       if (res.status === 200 && res.data.code === 0) {
         const userid = getState().user._id;
         dispatch(msgList(res.data.msgs, res.data.users, userid));
       }
-    })
   }
 }
 
