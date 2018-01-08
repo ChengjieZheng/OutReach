@@ -12,8 +12,6 @@ import QueueAnim from 'rc-queue-anim'
   {sendMsg,getMegList,recvMsg,readMsg}
 )
 
-
-
 class Chat extends React.Component{
   constructor(props){
     super(props)
@@ -21,12 +19,15 @@ class Chat extends React.Component{
       text: "",
       msg:[],
       showEmoji : false,
+      emojiHeight: 0,
     }
+    this.handleEmojiDisplay = this.handleEmojiDisplay.bind(this);
   }
   componentDidMount(){
     if(!this.props.chat.chatmsg.length) {
       this.props.getMegList();
       this.props.recvMsg();
+      console.log("messages from chat")
     }
     
   }
@@ -42,6 +43,17 @@ class Chat extends React.Component{
     }, 0)
   }
 
+  async handleEmojiDisplay() {
+      await this.setState({emojiHeight: this._div.scrollHeight});
+      await this.setState({showEmoji: !this.state.showEmoji});
+      await this.fixCarousel();
+      if (this.state.emojiHeight === 50) {
+        const height=this._div.scrollHeight;
+        this._div.setAttribute("style",`bottom: ${height + 80}px;`);
+      } else {
+        this._div.setAttribute("style",`bottom: 0px;`);
+      }
+  }
 
   handleSubmit(){
     // socket.emit('sendmsg',{text: this.state.text})
@@ -57,7 +69,7 @@ class Chat extends React.Component{
     this.setState({
       text:'',
       showEmoji: false})
-
+      this._div.setAttribute("style",`bottom: 0px;`);
   }
 
   
@@ -78,6 +90,7 @@ class Chat extends React.Component{
     }
     const chatid = getChatId(userid, this.props.user._id)
     const chatmsgs = this.props.chat.chatmsg.filter(v=>v.chatid === chatid)
+    // console.log("chatmsgs: ", chatmsgs)
     return (
       <div id="chat-page">
         <NavBar 
@@ -111,7 +124,7 @@ class Chat extends React.Component{
           })}
         </QueueAnim>
       </div> 
-      <div className="stick-footer">
+      <div className="stick-footer" ref={div => this._div = div}>
         <List>
           <InputItem
             placeholder='please input your message'
@@ -125,12 +138,8 @@ class Chat extends React.Component{
               <div>
                 <span
                   style={{marginRight:15}}
-                  onClick={
-                    ()=>{
-                      this.setState({showEmoji: !this.state.showEmoji})
-                      this.fixCarousel()
-                    }
-                  }
+                  onClick={this.handleEmojiDisplay}
+                   
                 >😍</span>
                 <span onClick={()=>this.handleSubmit()}>Send</span>
               </div>

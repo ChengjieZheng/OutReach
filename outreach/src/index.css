@@ -35,8 +35,11 @@
 }
 
 #chat-page-messages{
-    margin-top: 50px;
-    margin-bottom: 50px;
+    top: 45px;
+    bottom: 45px;
+    position:absolute;
+    width: 100%;
+    overflow: auto;
 }
 
 .stick-footer{

@@ -66,8 +66,10 @@ function msgRecv(msg, userid) {
 }
 
 export function recvMsg() {
+  console.log("call recvMsg");
   return (dispatch, getState) => {
     socket.on('recvmsg', function(data){
+      console.log("received messages: ", data)
       const userid = getState().user._id;
       dispatch(msgRecv(data, userid))
     })

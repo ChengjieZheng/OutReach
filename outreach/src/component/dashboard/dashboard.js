@@ -17,9 +17,10 @@ import QueueAnim from 'rc-queue-anim'
 
 class Dashboard extends React.Component{
   componentDidMount(){
-    if(!this.props.chat.chatmsg.length) {
+    if(this.props.chat.chatmsg.length === 0) {
       this.props.getMegList();
       this.props.recvMsg();
+      console.log("messages from Dashboard")
     }
   }
 
