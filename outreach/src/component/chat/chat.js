@@ -23,13 +23,14 @@ class Chat extends React.Component{
     }
     this.handleEmojiDisplay = this.handleEmojiDisplay.bind(this);
   }
+
   componentDidMount(){
-    if(!this.props.chat.chatmsg.length) {
-      this.props.getMegList();
-      this.props.recvMsg();
-      console.log("messages from chat")
-    }
-  }
+		if (!this.props.chat.chatmsg.length) {
+			this.props.getMegList()
+      this.props.recvMsg()
+		}
+
+	}
 
   componentWillUnmount(){
     const to = this.props.match.params.user
