@@ -19,7 +19,7 @@ class Chat extends React.Component{
       text: "",
       msg:[],
       showEmoji : false,
-      emojiHeight: 0,
+      emojiHeight: 50,
     }
     this.handleEmojiDisplay = this.handleEmojiDisplay.bind(this);
   }
@@ -29,7 +29,6 @@ class Chat extends React.Component{
       this.props.recvMsg();
       console.log("messages from chat")
     }
-    
   }
 
   componentWillUnmount(){
@@ -49,7 +48,7 @@ class Chat extends React.Component{
       await this.fixCarousel();
       if (this.state.emojiHeight === 50) {
         const height=this._div.scrollHeight;
-        this._div.setAttribute("style",`bottom: ${height + 80}px;`);
+        this._div.setAttribute("style",`bottom: ${height + 95}px;`);
       } else {
         this._div.setAttribute("style",`bottom: 0px;`);
       }
