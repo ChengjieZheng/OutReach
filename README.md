@@ -33,3 +33,7 @@ npm install
 * `npm run build`
 * `npm run server`
 * Please type localhost/9030 to start
+
+### About Bug
+
+* Please reflash the page when you register an account and talk to somebody
